@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
 
         movementX = movementVector.x;
         movementY = movementVector.y;
-
     }
 
     void FixedUpdate()
@@ -31,6 +30,10 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        other.gameObject.SetActive(false);
     }
 }
